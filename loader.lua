@@ -57,6 +57,5 @@ cheat.set_callback("paint", function()
             executed = true
         end)
     end)
-
     executed = true
 end)
