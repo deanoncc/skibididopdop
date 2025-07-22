@@ -59,5 +59,4 @@ cheat.set_callback("paint", function()
     end)
 
     executed = true
-    print("Debug: Executed flag set to true")
 end)
