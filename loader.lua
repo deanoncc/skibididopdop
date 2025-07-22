@@ -1,65 +1,60 @@
 local executed = false
 
 cheat.set_callback("paint", function()
-    print("Debug: Paint callback triggered")
     if executed then
-        print("Debug: Script already executed, skipping")
         return
     end
 
     local place_id = globals.place_id()
-    print("Debug: Place ID = " .. (place_id or "nil"))
+    local place_id_str = tostring(place_id)
     if not place_id then
         print("Error: Not in a game. Please join a game to load the script.")
+        executed = true
         return
     end
 
     local mapping_url = "https://raw.githubusercontent.com/deanoncc/skibididopdop/refs/heads/main/ids.json"
-
-    print("Debug: Fetching mapping from " .. mapping_url)
     http.get(mapping_url, function(response)
-        print("Debug: Mapping response received, length = " .. (#response or 0))
         if not response or response == "" then
             print("Error: Failed to fetch script mapping or empty response.")
+            executed = true
             return
         end
 
-        local mapping = json.parse(response)
-        print("Debug: JSON parsing result = " .. (mapping and "success" or "failed"))
+        local mapping, parse_err = json.parse(response)
         if not mapping then
-            print("Error: Failed to parse script mapping.")
+            print("Error: Failed to parse script mapping - " .. (parse_err or "Unknown error"))
+            executed = true
             return
         end
 
-        local script_url = mapping[tostring(place_id)]
-        print("Debug: Script URL for Place ID " .. place_id .. " = " .. (script_url or "nil"))
+        local script_url = mapping[place_id_str]
         if not script_url then
-            print("Error: Game with Place ID " .. place_id .. " is not supported.")
+            print("Error: No script URL found for Place ID " .. place_id_str .. " in mapping.")
+            executed = true
             return
         end
 
-        print("Debug: Fetching script from " .. script_url)
         http.get(script_url, function(script)
-            print("Debug: Script response received, length = " .. (#script or 0))
             if not script or script == "" then
-                print("Error: Failed to fetch script for Place ID " .. place_id .. ".")
+                print("Error: Failed to fetch script or empty response for Place ID " .. place_id_str .. ".")
+                executed = true
                 return
             end
 
-            local func, err = utils.loadstring(script)
-            print("Debug: Loadstring result = " .. (func and "success" or "failed"))
+            local func, load_err = utils.loadstring(script)
             if not func then
-                print("Error: Failed to load script - " .. (err or "Unknown error"))
+                print("Error: Failed to load script - " .. (load_err or "Unknown error"))
+                executed = true
                 return
             end
 
             local success, result = pcall(func)
-            print("Debug: Script execution result = " .. (success and "success" or "failed"))
             if success then
-                print("Success: Script for Place ID " .. place_id .. " loaded and executed.")
+                print("Success: Script for Place ID " .. place_id_str .. " loaded and executed.")
             else
-                print("Error: Script execution failed - " .. (result or "Unknown error"))
             end
+            executed = true
         end)
     end)
 
