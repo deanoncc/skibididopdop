@@ -4,6 +4,7 @@ local color_picker = ui.colorpicker("ESP Color", 1.0, 1.0, 1.0, 1.0) -- Default 
 
 -- Main paint callback to render item labels and distances
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     -- Get the local player
     local local_player = globals.localplayer()
     
@@ -95,4 +96,5 @@ cheat.set_callback("paint", function()
             end
         end
     end
+
 end)
