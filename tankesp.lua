@@ -6,6 +6,7 @@ local font_type = ui.new_combo("Font Type", {"Default", "Pixel", "Normal", "Bold
 
 -- Callback for rendering ESP
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     local mode = esp_mode:get()
     if mode == 0 then return end -- ESP is off
 
@@ -109,4 +110,5 @@ cheat.set_callback("paint", function()
             end
         end
     end
+
 end)
