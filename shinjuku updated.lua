@@ -5,6 +5,7 @@ local distance_combo = ui.new_combo("Max Item Distance", {"100m", "250m", "500m"
 
 -- Main paint callback to render item labels and distances
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     -- Get the local player
     local local_player = globals.localplayer()
     
@@ -94,4 +95,5 @@ cheat.set_callback("paint", function()
             end
         end
     end
+
 end)
