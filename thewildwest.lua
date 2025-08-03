@@ -573,6 +573,7 @@ end
 
 -- Event Callbacks
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     if not globals.workspace() or not globals.localplayer() then
         print("Error: workspace or localplayer not loaded")
         return
@@ -586,9 +587,11 @@ cheat.set_callback("paint", function()
 end)
 
 cheat.set_callback("shutdown", function()
+    if not globals.is_focused() then return end
     cached_targets, cached_gold, cached_animals, current_target_id = {}, {}, {}, nil
     print("script unloaded cleanly.")
 end)
 
 
 print("loaded")
+
