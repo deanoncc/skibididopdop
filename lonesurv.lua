@@ -1,4 +1,4 @@
--- Trident Survival Aimbot and ESP Script with R15 Chams, 3D Box, Keys, and Backpacks (Optimized with Manual Cache - V5 Adapted)
+-- lone surv Aimbot and ESP Script with R15 Chams, 3D Box, Keys, and Backpacks (Optimized with Manual Cache - V5 Adapted)
 -- Place in: C:\Users\USER\AppData\Roaming\Assembly\Scripts
 
 --[[
@@ -521,7 +521,8 @@ end)
 
 cheat.set_callback("shutdown", function()
     cached_targets, cached_keys, cached_backpacks, current_target_id = {}, {}, {}, nil
-    print("Trident Survival (Players Folder, V5) script unloaded cleanly.")
+    print("lone surv(Players Folder, V5) script unloaded cleanly.")
 end)
 
-print("Trident Survival Aimbot and ESP (Players Folder, V5) loaded successfully!")
+
+print("lone survAimbot and ESP (Players Folder, V5) loaded successfully!")
