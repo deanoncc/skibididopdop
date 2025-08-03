@@ -511,6 +511,7 @@ end
 
 -- Event Callbacks
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     if globals.curtime() - last_cache_update > CACHE_UPDATE_INTERVAL then
         update_target_cache()
         last_cache_update = globals.curtime()
@@ -520,9 +521,11 @@ cheat.set_callback("paint", function()
 end)
 
 cheat.set_callback("shutdown", function()
+    if not globals.is_focused() then return end
     cached_targets, cached_keys, cached_backpacks, current_target_id = {}, {}, {}, nil
     print("lone surv(Players Folder, V5) script unloaded cleanly.")
 end)
 
 
 print("lone survAimbot and ESP (Players Folder, V5) loaded successfully!")
+
