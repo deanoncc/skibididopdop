@@ -1,4 +1,4 @@
--- Trident Survival Aimbot and ESP Script with Custom Limbs Skeleton ESP (V5 Adapted)
+-- tarkov copy Aimbot and ESP Script with Custom Limbs Skeleton ESP (V5 Adapted)
 -- Place in: C:\Users\USER\AppData\Roaming\Assembly\Scripts
 
 --[[
@@ -446,7 +446,8 @@ end)
 
 cheat.set_callback("shutdown", function()
     cached_targets, current_target_id = {}, nil
-    print("Trident Survival (Players Folder, V5 Adapted) script unloaded cleanly.")
+    print("tarkov copy script unloaded cleanly.")
 end)
 
-print("Trident Survival Aimbot and ESP (Players Folder, V5 Adapted) loaded successfully!")
+
+print("tarkov copy Aimbot and ESP loaded successfully!")
