@@ -10,6 +10,7 @@ distance_combo:set_visible(true)
 
 -- Main paint callback to render trinket labels and distances
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     -- Get the local player
     local local_player = globals.localplayer()
     if not local_player then return end -- Exit if no local player
@@ -102,4 +103,5 @@ cheat.set_callback("paint", function()
             end
         end
     end
+
 end)
