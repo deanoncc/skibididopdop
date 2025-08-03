@@ -9,6 +9,7 @@ local max_distance_combo = ui.new_combo("Max ESP Distance", {"1000m", "2000m", "
 
 -- Main paint callback to render ESP labels and distances
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     -- Get the local player
     local local_player = globals.localplayer()
     if not local_player then return end
@@ -295,4 +296,5 @@ cheat.set_callback("paint", function()
             end
         end
     end
+
 end)
