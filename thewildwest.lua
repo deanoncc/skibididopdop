@@ -587,7 +587,8 @@ end)
 
 cheat.set_callback("shutdown", function()
     cached_targets, cached_gold, cached_animals, current_target_id = {}, {}, {}, nil
-    print("Trident Survival (Entities Folder, V5) script unloaded cleanly.")
+    print("script unloaded cleanly.")
 end)
 
-print("Trident Survival Aimbot and ESP (Entities Folder, V5) loaded successfully!")
+
+print("loaded")
