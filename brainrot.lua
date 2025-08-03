@@ -93,6 +93,7 @@ local valuable_toggle = ui.new_checkbox("Draw only valuable")
 
 -- Main paint callback to render NPC labels with rarity-based colors
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     -- Check if ESP is enabled
     if not esp_toggle:get() then
         return
@@ -197,4 +198,5 @@ cheat.set_callback("paint", function()
         end
         ::continue::
     end
+
 end)
