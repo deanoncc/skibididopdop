@@ -12,6 +12,7 @@ local vitality_star_color = { r = 0, g = 255, b = 0, a = 255 } -- Green (#00FF00
 
 -- Main paint callback to render ESP labels and distances
 cheat.set_callback("paint", function()
+    if not globals.is_focused() then return end
     -- Get the local player
     local local_player = globals.localplayer()
     
@@ -254,3 +255,4 @@ cheat.set_callback("paint", function()
         end
     end
 end)
+
