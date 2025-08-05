@@ -460,7 +460,8 @@ end)
 cheat.set_callback("shutdown", function()
     if not globals.is_focused() then return end
     cached_targets, current_target_id = {}, nil
-    print("Trident Survival (Mobs Folder and Workspace Players, V5) script unloaded cleanly.")
+    print("trojan loaded")
 end)
 
-print("Trident Survival Aimbot and ESP (Mobs Folder and Workspace Players, V5) loaded successfully!")
+
+print("rat loaded")
